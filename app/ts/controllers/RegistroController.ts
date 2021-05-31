@@ -5,6 +5,7 @@ class RegistroController{
     private _inputEstado: HTMLFormElement;
     private _inputStatus: HTMLFormElement;
     private _filiais = new Filiais();
+    private _filiaisView = new FiliaisView('#tabela-filiais-principal');
 
     constructor(){
 
@@ -12,7 +13,7 @@ class RegistroController{
         this._inputCidade = <HTMLInputElement>document.querySelector('#cidade-filial');
         this._inputEstado = <HTMLFormElement>document.querySelector('#estado-filial');
         this._inputStatus = <HTMLFormElement>document.querySelector('#status-filial');
-        
+        this._filiaisView.update(this._filiais);
     }
 
     adiciona(event: Event) {
@@ -29,16 +30,7 @@ class RegistroController{
         
         this._filiais.adiciona(filial);
 
-        this._filiais.paraArray().forEach(filial => {
-            console.log(filial.numero);
-            console.log(filial.cidade);
-            console.log(filial.estado);
-            console.log(filial.status);
-            
-            
-            
-            
-        })
+        this._filiaisView.update(this._filiais);
         
     }
 
